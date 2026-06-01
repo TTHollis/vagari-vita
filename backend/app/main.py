@@ -34,8 +34,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in settings.cors_origins.split(",")],
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type"],
+    allow_methods=["GET", "POST", "DELETE"],
+    allow_headers=["Content-Type", "X-Admin-Token"],
 )
 
 app.include_router(events.router, prefix="/api")

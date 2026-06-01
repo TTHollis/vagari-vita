@@ -1,24 +1,51 @@
 {
   "name": "Urban Nomad",
   "short_name": "UrbanNomad",
-  "description": "Live Local, Explore Everywhere",
+  "description": "Live Local, Explore Everywhere — discover city events and AI-powered local guides for anywhere on Earth.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0F1A35",
   "theme_color": "#1B2B5E",
   "orientation": "portrait-primary",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["travel", "lifestyle", "navigation"],
   "icons": [
     {
       "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Local Events",
+      "short_name": "Local",
+      "description": "Find events happening in your city",
+      "url": "/local",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Nomad Mode",
+      "short_name": "Nomad",
+      "description": "AI guides and tips for any city",
+      "url": "/nomad",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Saved Events",
+      "short_name": "Saved",
+      "description": "Your starred events",
+      "url": "/saved",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
     }
   ]
 }

@@ -9,6 +9,9 @@ def _normalize(event: dict) -> dict:
     address = venue.get("address") or {}
     logo = event.get("logo") or {}
 
+    lat = venue.get("latitude") or address.get("latitude")
+    lng = venue.get("longitude") or address.get("longitude")
+
     return {
         "id": f"eb-{event['id']}",
         "source": "eventbrite",
@@ -19,6 +22,8 @@ def _normalize(event: dict) -> dict:
         "venue_address": address.get("address_1"),
         "city": address.get("city"),
         "state": address.get("region"),
+        "lat": float(lat) if lat else None,
+        "lng": float(lng) if lng else None,
         "url": event.get("url"),
         "image": (logo.get("original") or {}).get("url"),
         "category": None,

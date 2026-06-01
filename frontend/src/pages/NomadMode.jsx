@@ -6,6 +6,7 @@ import EventCard from '../components/EventCard'
 import LocationSearch from '../components/LocationSearch'
 import DateFilter from '../components/DateFilter'
 import CalendarView from '../components/CalendarView'
+import MapView from '../components/MapView'
 import Footer from '../components/Footer'
 import { getBriefing, getTips, getEvents } from '../services/api'
 import { useRecentSearches } from '../hooks/useRecentSearches'
@@ -13,6 +14,16 @@ import { shareContent } from '../utils/share'
 import styles from './NomadMode.module.css'
 
 const TIP_CATEGORIES = ['General', 'Food', 'Transport', 'Safety', 'Etiquette', 'Nightlife', 'Hidden Gems']
+
+// Curated list of evocative cities for the "Surprise me" button
+const SURPRISE_CITIES = [
+  'Tokyo', 'Kyoto', 'Lisbon', 'Porto', 'Marrakech', 'Cape Town', 'Mexico City',
+  'Oaxaca', 'Buenos Aires', 'Medellín', 'Tbilisi', 'Istanbul', 'Hanoi',
+  'Chiang Mai', 'Seoul', 'Taipei', 'Prague', 'Budapest', 'Ljubljana',
+  'Valletta', 'Tallinn', 'Reykjavik', 'Marseille', 'Naples', 'Sevilla',
+  'Cartagena', 'Lima', 'Valparaíso', 'Tangier', 'Zanzibar City', 'Luang Prabang',
+  'Kathmandu', 'Tbilisi', 'Sarajevo', 'Kotor', 'Bergen', 'Edinburgh', 'Galway',
+]
 
 export default function NomadMode() {
   const [activeTab, setActiveTab] = useState('playbook')
@@ -112,6 +123,13 @@ export default function NomadMode() {
       setEventsStatus('error')
     }
   }, [record, dateRange])
+
+  // Pick a random city from the curated list and explore it
+  const handleSurprise = () => {
+    const city = SURPRISE_CITIES[Math.floor(Math.random() * SURPRISE_CITIES.length)]
+    setActiveTab('playbook')
+    search({ city, displayName: city })
+  }
 
   // Re-fetch only events when the date filter changes (playbook + tips are
   // date-agnostic so no need to reload them)
@@ -260,15 +278,22 @@ export default function NomadMode() {
                           className={`${styles.viewBtn} ${eventsView === 'calendar' ? styles.viewActive : ''}`}
                           onClick={() => setEventsView('calendar')}
                         >🗓️ Calendar</button>
+                        <button
+                          type="button"
+                          className={`${styles.viewBtn} ${eventsView === 'map' ? styles.viewActive : ''}`}
+                          onClick={() => setEventsView('map')}
+                        >🗺️ Map</button>
                       </div>
                     </div>
-                    {eventsView === 'grid' ? (
+                    {eventsView === 'grid' && (
                       <div className={styles.eventsGrid}>
                         {events.map(event => <EventCard key={event.id} event={event} />)}
                       </div>
-                    ) : (
+                    )}
+                    {eventsView === 'calendar' && (
                       <CalendarView events={events} accentColor="amber" targetDate={dateRange.start_date} />
                     )}
+                    {eventsView === 'map' && <MapView events={events} />}
                   </>
                 )}
               </div>
@@ -312,6 +337,9 @@ export default function NomadMode() {
                 <button key={c} className={styles.exampleChip} onClick={() => search({ city: c, displayName: c })}>{c}</button>
               ))}
             </div>
+            <button type="button" className={styles.surpriseBtn} onClick={handleSurprise}>
+              🎲 Surprise me
+            </button>
           </div>
         )}
 

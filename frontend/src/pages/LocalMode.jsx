@@ -5,6 +5,7 @@ import TipCard from '../components/TipCard'
 import LocationSearch from '../components/LocationSearch'
 import DateFilter from '../components/DateFilter'
 import CalendarView from '../components/CalendarView'
+import MapView from '../components/MapView'
 import Footer from '../components/Footer'
 import { getEvents, getTips, addTip } from '../services/api'
 import { useRecentSearches } from '../hooks/useRecentSearches'
@@ -219,16 +220,25 @@ export default function LocalMode() {
                     >
                       🗓️ Calendar
                     </button>
+                    <button
+                      type="button"
+                      className={`${styles.viewBtn} ${view === 'map' ? styles.viewActive : ''}`}
+                      onClick={() => setView('map')}
+                    >
+                      🗺️ Map
+                    </button>
                   </div>
                 </div>
 
-                {view === 'grid' ? (
+                {view === 'grid' && (
                   <div className={styles.grid}>
                     {events.map(event => <EventCard key={event.id} event={event} />)}
                   </div>
-                ) : (
+                )}
+                {view === 'calendar' && (
                   <CalendarView events={events} accentColor="green" targetDate={dateRange.start_date} />
                 )}
+                {view === 'map' && <MapView events={events} />}
               </section>
             )}
           </>

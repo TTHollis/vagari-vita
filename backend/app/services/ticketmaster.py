@@ -10,6 +10,10 @@ def _normalize(event: dict) -> dict:
     images = event.get("images", [])
     thumb = next((i["url"] for i in images if i.get("ratio") == "3_2"), None)
 
+    loc = venue.get("location") or {}
+    lat = loc.get("latitude")
+    lng = loc.get("longitude")
+
     return {
         "id": f"tm-{event['id']}",
         "source": "ticketmaster",
@@ -20,6 +24,8 @@ def _normalize(event: dict) -> dict:
         "venue_address": venue.get("address", {}).get("line1"),
         "city": venue.get("city", {}).get("name"),
         "state": venue.get("state", {}).get("stateCode"),
+        "lat": float(lat) if lat else None,
+        "lng": float(lng) if lng else None,
         "url": event.get("url"),
         "image": thumb,
         "category": (event.get("classifications") or [{}])[0]

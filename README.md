@@ -72,4 +72,8 @@ Found a bug? Have an idea? Something feel off?
 
 ## License
 
-MIT — see [LICENSE](./LICENSE) if/when added. Source is public so the work is transparent and ethics are verifiable, not as a step-by-step recipe to clone.
+© 2026 Timothy Troy Hollis. All rights reserved.
+
+The source is public for transparency — so the ethics and content-moderation practices can be verified — not as a template to clone or redistribute. Please don't repackage it as your own.
+
+Interested in using part of this work? Reach out: [Timothy.Troy.Hollis@gmail.com](mailto:Timothy.Troy.Hollis@gmail.com)

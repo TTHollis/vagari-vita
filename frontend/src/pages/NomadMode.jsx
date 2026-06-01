@@ -296,7 +296,7 @@ export default function NomadMode() {
                   </div>
                 )}
                 <div className={styles.tipsList}>
-                  {filteredTips.map(tip => <TipCard key={tip.id} tip={tip} />)}
+                  {filteredTips.map(tip => <TipCard key={tip.id} tip={tip} accentColor="amber" />)}
                 </div>
               </div>
             )}

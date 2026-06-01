@@ -33,11 +33,11 @@ async def get_tips(
 ):
     # Normalize zip → "City, State" so tips show up across both search modes
     canonical = await canonicalize_location(city)
-    # Only return approved tips to the public
+    # Only return approved tips to the public, most-upvoted first
     result = await db.execute(
         select(LocalTip)
         .where(LocalTip.city == canonical, LocalTip.status == "approved")
-        .order_by(LocalTip.created_at.desc())
+        .order_by(LocalTip.upvotes.desc(), LocalTip.created_at.desc())
         .limit(50)
     )
     tips = result.scalars().all()
@@ -49,11 +49,39 @@ async def get_tips(
                 "category": t.category,
                 "content": t.content,
                 "author_handle": t.author_handle,
+                "upvotes": t.upvotes or 0,
                 "created_at": t.created_at.isoformat(),
             }
             for t in tips
         ],
     }
+
+
+# Community-report threshold: at this many reports, a tip auto-hides pending review
+REPORT_THRESHOLD = 3
+
+
+@router.post("/tips/{tip_id}/upvote")
+async def upvote_tip(tip_id: int, db: AsyncSession = Depends(get_db)):
+    tip = await db.get(LocalTip, tip_id)
+    if not tip or tip.status != "approved":
+        raise HTTPException(status_code=404, detail="Tip not found")
+    tip.upvotes = (tip.upvotes or 0) + 1
+    await db.commit()
+    return {"id": tip.id, "upvotes": tip.upvotes}
+
+
+@router.post("/tips/{tip_id}/report")
+async def report_tip(tip_id: int, db: AsyncSession = Depends(get_db)):
+    tip = await db.get(LocalTip, tip_id)
+    if not tip:
+        raise HTTPException(status_code=404, detail="Tip not found")
+    tip.report_count = (tip.report_count or 0) + 1
+    # Auto-hide once enough people flag it; lands in the admin review queue
+    if tip.report_count >= REPORT_THRESHOLD and tip.status == "approved":
+        tip.status = "flagged"
+    await db.commit()
+    return {"id": tip.id, "reported": True}
 
 
 @router.post("/tips", status_code=201)

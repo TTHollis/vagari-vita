@@ -40,3 +40,9 @@ export const getTips = (city) =>
 
 export const addTip = (tip) =>
   request('/nomad/tips', { method: 'POST', body: JSON.stringify(tip) })
+
+export const upvoteTip = (id) =>
+  request(`/nomad/tips/${id}/upvote`, { method: 'POST' })
+
+export const reportTip = (id) =>
+  request(`/nomad/tips/${id}/report`, { method: 'POST' })

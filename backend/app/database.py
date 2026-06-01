@@ -21,6 +21,8 @@ async def init_db():
         for stmt in [
             "ALTER TABLE local_tips ADD COLUMN status VARCHAR(20) DEFAULT 'approved'",
             "ALTER TABLE local_tips ADD COLUMN rejection_categories VARCHAR(255)",
+            "ALTER TABLE local_tips ADD COLUMN upvotes INTEGER DEFAULT 0",
+            "ALTER TABLE local_tips ADD COLUMN report_count INTEGER DEFAULT 0",
         ]:
             try:
                 await conn.execute(text(stmt))

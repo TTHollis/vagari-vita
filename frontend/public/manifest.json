@@ -1,7 +1,7 @@
 {
-  "name": "Urban Nomad",
-  "short_name": "UrbanNomad",
-  "description": "Live Local, Explore Everywhere — discover city events and AI-powered local guides for anywhere on Earth.",
+  "name": "Vagari Vita",
+  "short_name": "VagariVita",
+  "description": "Wander Life. Wander Culture. — discover city events and AI-powered local guides for anywhere on Earth.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

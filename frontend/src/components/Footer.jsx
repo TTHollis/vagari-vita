@@ -25,7 +25,7 @@ export default function Footer() {
         </a>
       </div>
       <p className={styles.disclaimer}>
-        Urban Nomad — Live Local, Explore Everywhere. AI-generated content is labeled
+        Vagari Vita — Wander Life. Wander Culture. AI-generated content is labeled
         and may contain errors; always cross-check anything that matters.
       </p>
     </footer>

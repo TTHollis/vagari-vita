@@ -58,7 +58,7 @@ export default function NomadMode() {
 
   const handleSharePlaybook = async () => {
     const res = await shareContent({
-      title: `${displayName} — Urban Nomad`,
+      title: `${displayName} — Vagari Vita`,
       text: `Local guide for ${displayName}. Get the inside scoop on culture, food, and neighborhoods.`,
       url: `${window.location.origin}/nomad?city=${encodeURIComponent(displayName)}`,
     })

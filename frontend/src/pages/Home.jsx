@@ -38,7 +38,7 @@ export default function Home() {
         <div className={styles.logoWrap}>
           <img
             src="/logo.jpeg"
-            alt="Urban Nomad — Live Local, Explore Everywhere"
+            alt="Vagari Vita — Wander Life. Wander Culture."
             className={styles.logoImg}
           />
         </div>

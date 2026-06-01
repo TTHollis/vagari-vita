@@ -25,7 +25,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Urban Nomad API",
+    title="Vagari Vita API",
     version="0.1.0",
     lifespan=lifespan,
 )

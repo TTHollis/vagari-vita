@@ -60,7 +60,7 @@ export function buildIcs(event) {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Urban Nomad//EN',
+    'PRODID:-//Vagari Vita//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -71,7 +71,7 @@ export function buildIcs(event) {
     `SUMMARY:${ics(event.name)}`,
     location && `LOCATION:${ics(location)}`,
     event.url && `URL:${ics(event.url)}`,
-    event.url && `DESCRIPTION:${ics(`From Urban Nomad. Tickets: ${event.url}`)}`,
+    event.url && `DESCRIPTION:${ics(`From Vagari Vita. Tickets: ${event.url}`)}`,
     'END:VEVENT',
     'END:VCALENDAR',
   ].filter(Boolean)

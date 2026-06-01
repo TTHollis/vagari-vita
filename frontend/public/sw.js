@@ -1,5 +1,5 @@
 /**
- * Urban Nomad service worker.
+ * Vagari Vita service worker.
  *
  * Strategy:
  *  - HTML (navigation requests): network-first, fall back to cache when offline.
@@ -9,7 +9,7 @@
  *  - API requests (/api/*): pass through to network, never cached.
  */
 
-const CACHE = 'urban-nomad-v2'
+const CACHE = 'vagari-vita-v1'
 const PRECACHE = ['/']
 
 self.addEventListener('install', e => {

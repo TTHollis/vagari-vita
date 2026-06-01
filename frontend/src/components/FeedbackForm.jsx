@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './FeedbackForm.module.css'
 
-// Urban Nomad's dedicated Formspree endpoint — submissions go directly to inbox.
+// Vagari Vita's dedicated Formspree endpoint — submissions go directly to inbox.
 const FORMSPREE_URL = 'https://formspree.io/f/xpqnjjdp'
 
 export default function FeedbackForm() {
@@ -11,7 +11,7 @@ export default function FeedbackForm() {
     e.preventDefault()
     const form = e.target
     const data = new FormData(form)
-    data.append('source', 'Urban Nomad')
+    data.append('source', 'Vagari Vita')
 
     setStatus('sending')
     try {

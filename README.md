@@ -1,6 +1,6 @@
-# Urban Nomad 🌍
+# Vagari Vita 🌍
 
-> **Live Local, Explore Everywhere**
+> **Wander Life. Wander Culture.**
 
 **Live app:** [urbannomad.onrender.com](https://urbannomad.onrender.com)
 
@@ -10,7 +10,7 @@ A React PWA that helps you discover what's happening in any city — whether you
 
 ## What It Does
 
-Urban Nomad has two modes designed around two different mindsets.
+Vagari Vita has two modes designed around two different mindsets.
 
 ### 📍 Local Mode
 You're a resident of this city.
@@ -32,7 +32,7 @@ You're visiting somewhere new.
 
 ## Built For Mobile
 
-Urban Nomad is a Progressive Web App — you can install it directly to your phone's home screen from the browser. No app store required. Works fully offline for browsing previously cached content.
+Vagari Vita is a Progressive Web App — you can install it directly to your phone's home screen from the browser. No app store required. Works fully offline for browsing previously cached content.
 
 Native sharing, geolocation auto-detect, and the Add to Calendar export all work like a real native app once installed.
 
@@ -40,7 +40,7 @@ Native sharing, geolocation auto-detect, and the Add to Calendar export all work
 
 ## Privacy & Ethics
 
-Urban Nomad is built with privacy in mind:
+Vagari Vita is built with privacy in mind:
 - **No accounts, no logins, no tracking**
 - Saved events and search history live only in your browser
 - Community tips are AI-moderated to keep the space free of hate, harassment, and harmful content

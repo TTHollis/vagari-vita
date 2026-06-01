@@ -46,3 +46,18 @@ export const upvoteTip = (id) =>
 
 export const reportTip = (id) =>
   request(`/nomad/tips/${id}/report`, { method: 'POST' })
+
+// Admin — all require the X-Admin-Token header (shared secret)
+const adminHeaders = (token) => ({ 'X-Admin-Token': token })
+
+export const adminGetSummary = (token) =>
+  request('/nomad/admin/summary', { headers: adminHeaders(token) })
+
+export const adminGetTips = (token, status) =>
+  request(`/nomad/admin/tips?status=${status}`, { headers: adminHeaders(token) })
+
+export const adminRestoreTip = (token, id) =>
+  request(`/nomad/admin/tips/${id}/restore`, { method: 'POST', headers: adminHeaders(token) })
+
+export const adminDeleteTip = (token, id) =>
+  request(`/nomad/admin/tips/${id}`, { method: 'DELETE', headers: adminHeaders(token) })

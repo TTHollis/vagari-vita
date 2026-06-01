@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+import os
+from fastapi import APIRouter, Depends, HTTPException, Query, Header
 from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -8,6 +9,20 @@ from ..services.openai_service import generate_briefing, moderate_content
 from ..services.geocoding import canonicalize_location
 
 router = APIRouter(tags=["nomad"])
+
+
+async def require_admin(x_admin_token: str | None = Header(default=None)):
+    """
+    Shared-secret gate for admin endpoints. Set ADMIN_TOKEN in the environment;
+    callers must send a matching X-Admin-Token header. Fails closed: if no token
+    is configured on the server, admin access is denied entirely.
+    """
+    expected = os.getenv("ADMIN_TOKEN")
+    if not expected:
+        raise HTTPException(status_code=503, detail="Admin access is not configured.")
+    if not x_admin_token or x_admin_token != expected:
+        raise HTTPException(status_code=401, detail="Invalid admin token.")
+    return True
 
 
 class TipCreate(BaseModel):
@@ -119,32 +134,77 @@ async def post_tip(body: TipCreate, db: AsyncSession = Depends(get_db)):
     return {"id": tip.id, "created_at": tip.created_at.isoformat(), "status": "approved"}
 
 
-@router.get("/admin/rejected-tips")
-async def get_rejected_tips(db: AsyncSession = Depends(get_db)):
-    """
-    Returns the full list of tips that failed AI moderation.
-    NOTE: No auth in v1 — when this is deployed publicly, lock this endpoint
-    behind a token or admin auth before anything sensitive is in the DB.
-    """
+def _serialize_admin_tip(t: LocalTip) -> dict:
+    return {
+        "id": t.id,
+        "city": t.city,
+        "category": t.category,
+        "content": t.content,
+        "author_handle": t.author_handle,
+        "status": t.status,
+        "upvotes": t.upvotes or 0,
+        "report_count": t.report_count or 0,
+        "rejection_categories": (t.rejection_categories or "").split(",") if t.rejection_categories else [],
+        "created_at": t.created_at.isoformat(),
+    }
+
+
+@router.get("/admin/tips")
+async def admin_list_tips(
+    status: str = Query("flagged", pattern="^(flagged|rejected|approved)$"),
+    _: bool = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    """List tips by status for moderation review. Requires admin token."""
     result = await db.execute(
         select(LocalTip)
-        .where(LocalTip.status == "rejected")
-        .order_by(LocalTip.created_at.desc())
+        .where(LocalTip.status == status)
+        .order_by(LocalTip.report_count.desc(), LocalTip.created_at.desc())
         .limit(500)
     )
     tips = result.scalars().all()
-    return {
-        "count": len(tips),
-        "tips": [
-            {
-                "id": t.id,
-                "city": t.city,
-                "category": t.category,
-                "content": t.content,
-                "author_handle": t.author_handle,
-                "rejection_categories": (t.rejection_categories or "").split(",") if t.rejection_categories else [],
-                "created_at": t.created_at.isoformat(),
-            }
-            for t in tips
-        ],
-    }
+    return {"status": status, "count": len(tips), "tips": [_serialize_admin_tip(t) for t in tips]}
+
+
+@router.get("/admin/summary")
+async def admin_summary(
+    _: bool = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    """Counts per status, for the admin dashboard header."""
+    out = {}
+    for s in ("approved", "flagged", "rejected"):
+        result = await db.execute(select(LocalTip).where(LocalTip.status == s))
+        out[s] = len(result.scalars().all())
+    return out
+
+
+@router.post("/admin/tips/{tip_id}/restore")
+async def admin_restore_tip(
+    tip_id: int,
+    _: bool = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    """Approve a flagged/rejected tip and reset its report counter."""
+    tip = await db.get(LocalTip, tip_id)
+    if not tip:
+        raise HTTPException(status_code=404, detail="Tip not found")
+    tip.status = "approved"
+    tip.report_count = 0
+    await db.commit()
+    return {"id": tip.id, "status": tip.status}
+
+
+@router.delete("/admin/tips/{tip_id}")
+async def admin_delete_tip(
+    tip_id: int,
+    _: bool = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    """Permanently delete a tip."""
+    tip = await db.get(LocalTip, tip_id)
+    if not tip:
+        raise HTTPException(status_code=404, detail="Tip not found")
+    await db.delete(tip)
+    await db.commit()
+    return {"id": tip_id, "deleted": True}

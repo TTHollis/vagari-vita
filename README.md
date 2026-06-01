@@ -16,16 +16,17 @@ Urban Nomad has two modes designed around two different mindsets.
 You're a resident of this city.
 - Live event listings (concerts, sports, festivals, comedy, arts) sourced from Ticketmaster + Eventbrite
 - Filter by category and date — "this weekend," "next 7 days," or a custom range
-- Switch between a grid view and a calendar month view with today circled
+- View events three ways: grid, calendar month view (today circled), or an interactive map
 - Save events to your phone for later
 - Add events to your calendar (Apple Calendar, Outlook, Google)
-- **Share local knowledge** — contribute insider tips that travelers heading to your city will see
+- **Share local knowledge** — contribute insider tips that travelers heading to your city will see, and mark the most useful ones as helpful
 
 ### ✈️ Nomad Mode
 You're visiting somewhere new.
 - An AI-generated **Local Guide** for any city on Earth — vibe, etiquette, neighborhoods, food, transport
-- The same live event listings, so you know what's happening during your trip
+- The same live event listings (grid, calendar, or map), so you know what's happening during your trip
 - **Read insider tips** posted by locals — the bus routes, the dive bars, the food trucks, the etiquette traps to avoid
+- Feeling spontaneous? Hit **Surprise me** to explore a random city
 
 ---
 
@@ -43,6 +44,7 @@ Urban Nomad is built with privacy in mind:
 - **No accounts, no logins, no tracking**
 - Saved events and search history live only in your browser
 - Community tips are AI-moderated to keep the space free of hate, harassment, and harmful content
+- Anyone can report a tip that slips through, and reported content is automatically hidden pending review
 
 Read our full ethics statement: **[ETHICS.md](./ETHICS.md)**
 

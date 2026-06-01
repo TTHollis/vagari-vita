@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import LocalMode from './pages/LocalMode'
 import NomadMode from './pages/NomadMode'
@@ -7,12 +8,15 @@ import Admin from './pages/Admin'
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/local" element={<LocalMode />} />
-      <Route path="/nomad" element={<NomadMode />} />
-      <Route path="/saved" element={<Saved />} />
-      <Route path="/admin" element={<Admin />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/local" element={<LocalMode />} />
+        <Route path="/nomad" element={<NomadMode />} />
+        <Route path="/saved" element={<Saved />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </>
   )
 }

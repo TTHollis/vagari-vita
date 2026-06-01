@@ -1,7 +1,7 @@
 export default function Logo({ size = 64, className = '' }) {
   return (
     <img
-      src="/logo.jpeg"
+      src="/icons/icon-512.png"
       alt="Vagari Vita — Wander Life. Wander Culture."
       width={size}
       height={size}

@@ -25,11 +25,11 @@
 }
 
 .headerLogo {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   object-fit: cover;
-  object-position: center 20%;
-  border-radius: 6px;
+  object-position: center;
+  border-radius: 50%;
   background: #fff;
 }
 

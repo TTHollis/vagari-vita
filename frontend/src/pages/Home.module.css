@@ -42,7 +42,7 @@
 }
 
 .logoImg {
-  width: clamp(260px, 50vw, 420px);
+  width: clamp(300px, 72vw, 540px);
   height: auto;
   border-radius: 16px;
   background: #fff;

@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import Logo from '../components/Logo'
 import Footer from '../components/Footer'
 import styles from './Home.module.css'
 
@@ -20,11 +19,11 @@ const MODES = [
     label: 'Nomad',
     emoji: '✈️',
     headline: 'Go Anywhere, Know Everything',
-    description: 'AI-generated cultural intelligence briefings for any city on Earth, plus unfiltered tips from fellow nomads.',
+    description: 'AI-generated local guides for any city on Earth, plus unfiltered tips from fellow travelers.',
     cta: 'Start Exploring',
     accent: '#F39C12',
     gradient: 'linear-gradient(135deg, #3a2a0a 0%, #0F1A35 100%)',
-    features: ['AI cultural briefings', 'Community local tips', 'Etiquette & insider knowledge'],
+    features: ['AI local guides', 'Community local tips', 'Etiquette & insider knowledge'],
   },
 ]
 
@@ -37,7 +36,7 @@ export default function Home() {
       <div className={styles.hero}>
         <div className={styles.logoWrap}>
           <img
-            src="/logo.jpeg"
+            src="/VagariVita.png"
             alt="Vagari Vita — Wander Life. Wander Culture."
             className={styles.logoImg}
           />

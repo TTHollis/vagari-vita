@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <button className={styles.brand} onClick={() => navigate('/')} aria-label="Home">
-        <img src="/logo.jpeg" alt="" className={styles.headerLogo} />
+        <img src="/icons/icon-192.png" alt="" className={styles.headerLogo} />
         <span className={styles.wordmark}>
           <span style={{ color: '#1B2B5E' }}>Vagari</span>
           <span style={{ color: '#27AE60' }}>Vita</span>

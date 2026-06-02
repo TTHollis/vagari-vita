@@ -23,11 +23,11 @@ services:
       - key: DATABASE_URL
         value: sqlite+aiosqlite:///./urban_nomad.db
       - key: CORS_ORIGINS
-        value: https://urbannomad.onrender.com
+        value: https://vagarivita.onrender.com
 
   # React PWA (static site — always free, no plan needed)
   - type: web
-    name: urbannomad
+    name: vagarivita
     runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build

@@ -2,7 +2,7 @@
 
 > **Wander Life. Wander Culture.**
 
-**Live app:** [urbannomad.onrender.com](https://urbannomad.onrender.com)
+**Live app:** [vagarivita.onrender.com](https://vagarivita.onrender.com)
 
 A React PWA that helps you discover what's happening in any city — whether you live there or you're just passing through.
 

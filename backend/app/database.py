@@ -30,8 +30,11 @@ RAW_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./urban_nomad.db")
 DATABASE_URL = _normalize_db_url(RAW_URL)
 IS_POSTGRES = DATABASE_URL.startswith("postgresql")
 
-# Neon and other managed Postgres require SSL; asyncpg takes it via connect_args
-connect_args = {"ssl": True} if IS_POSTGRES else {}
+# Neon and other managed Postgres require SSL; asyncpg takes it via connect_args.
+# statement_cache_size=0 makes asyncpg compatible with connection poolers like
+# Neon's PgBouncer (transaction mode), avoiding "prepared statement" errors —
+# so either Neon connection string (pooled or direct) works.
+connect_args = {"ssl": True, "statement_cache_size": 0} if IS_POSTGRES else {}
 
 engine = create_async_engine(DATABASE_URL, echo=False, connect_args=connect_args)
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False)

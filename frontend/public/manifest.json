@@ -46,8 +46,8 @@
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
     },
     {
-      "name": "Nomad Mode",
-      "short_name": "Nomad",
+      "name": "Wander Mode",
+      "short_name": "Wander",
       "description": "AI guides and tips for any city",
       "url": "/nomad",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]

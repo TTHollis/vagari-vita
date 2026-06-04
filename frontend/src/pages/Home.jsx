@@ -16,7 +16,7 @@ const MODES = [
   },
   {
     id: 'nomad',
-    label: 'Nomad',
+    label: 'Wander',
     emoji: '✈️',
     headline: 'Go Anywhere, Know Everything',
     description: 'AI-generated local guides for any city on Earth, plus unfiltered tips from fellow travelers.',

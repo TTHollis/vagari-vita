@@ -30,7 +30,7 @@ export default function Header() {
               className={`${styles.pill} ${pathname === '/nomad' ? styles.active : ''}`}
               onClick={() => navigate('/nomad')}
             >
-              Nomad
+              Wander
             </button>
           </>
         )}

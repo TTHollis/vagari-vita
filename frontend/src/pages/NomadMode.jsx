@@ -168,7 +168,7 @@ export default function NomadMode() {
       <main className={styles.main}>
 
         <section className={styles.searchSection}>
-          <h1 className={styles.heading}><span>✈️</span> Nomad Mode</h1>
+          <h1 className={styles.heading}><span>✈️</span> Wander Mode</h1>
           <p className={styles.sub}>Your local guide + events + insider tips for any city on Earth</p>
           <LocationSearch
             onSearch={search}
@@ -303,7 +303,7 @@ export default function NomadMode() {
             {activeTab === 'tips' && (
               <div className={styles.tipsWrap}>
                 <p className={styles.tipsIntroNomad}>
-                  Tips from locals and nomads who've been to <strong>{displayName}</strong>.
+                  Tips from locals and travelers who've been to <strong>{displayName}</strong>.
                   Want to contribute your own? Switch to <strong>Local</strong> mode when you're in your home city.
                 </p>
                 <div className={styles.tipFilters}>
@@ -331,7 +331,7 @@ export default function NomadMode() {
         {!hasResults && !isLoading && (
           <div className={styles.idleHint}>
             <span className={styles.idleGlobe}>🌍</span>
-            <p>Search any city to get the full nomad experience</p>
+            <p>Search any city to get the full Wander experience</p>
             <div className={styles.idleExamples}>
               {['Tokyo', 'Buenos Aires', 'Marrakech', 'Tbilisi', 'Medellín'].map(c => (
                 <button key={c} className={styles.exampleChip} onClick={() => search({ city: c, displayName: c })}>{c}</button>

@@ -31,7 +31,7 @@ export default function Saved() {
             <h1 className={styles.heading}>⭐ Saved Events</h1>
             <p className={styles.sub}>
               {favorites.length === 0
-                ? "Nothing saved yet — star events from Local or Nomad mode."
+                ? "Nothing saved yet — star events from Local or Wander mode."
                 : `${favorites.length} event${favorites.length !== 1 ? 's' : ''} across ${grouped.length} ${grouped.length === 1 ? 'city' : 'cities'}`
               }
             </p>
@@ -63,7 +63,7 @@ export default function Saved() {
                 📍 Explore Local
               </button>
               <button onClick={() => navigate('/nomad')} className={`${styles.exploreBtn} ${styles.amber}`}>
-                ✈️ Explore Nomad
+                ✈️ Explore Wander
               </button>
             </div>
           </div>

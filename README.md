@@ -21,7 +21,7 @@ You're a resident of this city.
 - Add events to your calendar (Apple Calendar, Outlook, Google)
 - **Share local knowledge** — contribute insider tips that travelers heading to your city will see, and mark the most useful ones as helpful
 
-### ✈️ Nomad Mode
+### ✈️ Wander Mode
 You're visiting somewhere new.
 - An AI-generated **Local Guide** for any city on Earth — vibe, etiquette, neighborhoods, food, transport
 - The same live event listings (grid, calendar, or map), so you know what's happening during your trip

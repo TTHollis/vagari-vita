@@ -31,7 +31,7 @@ export const getEvents = ({ city, state, zip_code, ...params } = {}) => {
   return request(`/events?${q}`)
 }
 
-// Nomad mode
+// Wander mode (internal route namespace stays /nomad)
 export const getBriefing = (city) =>
   request(`/nomad/briefing?city=${encodeURIComponent(city)}`)
 

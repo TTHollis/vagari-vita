@@ -3,7 +3,7 @@ import re
 import httpx
 
 NOMINATIM_SEARCH = "https://nominatim.openstreetmap.org/search"
-USER_AGENT = "VagariVita/0.1 (https://github.com/TTHollis/urban-nomad)"
+USER_AGENT = "VagariVita/0.1 (https://github.com/TTHollis/vagari-vita)"
 
 
 ZIPPOPOTAM_URL = "https://api.zippopotam.us"

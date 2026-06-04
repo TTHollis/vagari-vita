@@ -66,7 +66,7 @@ Found a bug? Have an idea? Something feel off?
 
 - **Email:** [Timothy.Troy.Hollis@gmail.com](mailto:Timothy.Troy.Hollis@gmail.com)
 - **In-app feedback form** at the bottom of every page
-- **GitHub issues:** [github.com/TTHollis/urban-nomad/issues](https://github.com/TTHollis/urban-nomad/issues)
+- **GitHub issues:** [github.com/TTHollis/vagari-vita/issues](https://github.com/TTHollis/vagari-vita/issues)
 
 ---
 

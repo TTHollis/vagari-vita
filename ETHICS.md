@@ -27,6 +27,6 @@ Vagari Vita's source is public on GitHub — the code, the AI prompts, and the m
 We're a small, independent project. If something on Vagari Vita falls short of these standards, please reach out:
 
 - **Email:** [Timothy.Troy.Hollis@gmail.com](mailto:Timothy.Troy.Hollis@gmail.com)
-- **GitHub:** open an issue at [github.com/TTHollis/urban-nomad/issues](https://github.com/TTHollis/urban-nomad/issues)
+- **GitHub:** open an issue at [github.com/TTHollis/vagari-vita/issues](https://github.com/TTHollis/vagari-vita/issues)
 
 *Last updated: May 2026*

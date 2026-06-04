@@ -7,7 +7,7 @@ export default function Footer() {
       <FeedbackForm />
       <div className={styles.links}>
         <a
-          href="https://github.com/TTHollis/urban-nomad/blob/master/ETHICS.md"
+          href="https://github.com/TTHollis/vagari-vita/blob/master/ETHICS.md"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.link}
@@ -16,7 +16,7 @@ export default function Footer() {
         </a>
         <span className={styles.dot}>·</span>
         <a
-          href="https://github.com/TTHollis/urban-nomad"
+          href="https://github.com/TTHollis/vagari-vita"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.link}

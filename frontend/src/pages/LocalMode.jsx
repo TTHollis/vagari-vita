@@ -298,7 +298,7 @@ export default function LocalMode() {
                 <p className={styles.formFinePrint}>
                   By posting, you agree to our{' '}
                   <a
-                    href="https://github.com/TTHollis/urban-nomad/blob/master/ETHICS.md"
+                    href="https://github.com/TTHollis/vagari-vita/blob/master/ETHICS.md"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.formLink}

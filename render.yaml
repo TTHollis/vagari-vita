@@ -20,8 +20,11 @@ services:
         sync: false
       - key: ADMIN_TOKEN
         sync: false
+      # Neon Postgres connection string — set in the Render dashboard (it
+      # contains a password, so it's a secret, not committed). If unset, the
+      # app falls back to local SQLite (ephemeral on Render's free disk).
       - key: DATABASE_URL
-        value: sqlite+aiosqlite:///./urban_nomad.db
+        sync: false
       - key: CORS_ORIGINS
         value: https://vagarivita.onrender.com
 

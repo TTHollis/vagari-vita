@@ -1,10 +1,13 @@
 :root {
-  --navy: #1B2B5E;
-  --navy-dark: #0F1A35;
-  --navy-mid: #243570;
-  --green: #27AE60;
-  --green-light: #2ECC71;
-  --amber: #F39C12;
+  --navy: #16331F;
+  --navy-dark: #0C1A12;
+  --navy-mid: #1C3A28;
+  /* Forest green + orange — the Vagari Vita brand palette */
+  --green: #2E9E4F;
+  --green-light: #46C268;
+  --amber: #E8742C;   /* kept name for back-compat; now a true orange */
+  --orange: #E8742C;
+  --orange-light: #F5933F;
   --white: #FFFFFF;
   --white-soft: rgba(255, 255, 255, 0.85);
   --white-dim: rgba(255, 255, 255, 0.12);

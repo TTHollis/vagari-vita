@@ -10,8 +10,8 @@ const MODES = [
     headline: 'Your City, Right Now',
     description: 'Discover concerts, festivals, markets, and happenings within your city — powered by Ticketmaster and Eventbrite.',
     cta: 'Explore Locally',
-    accent: '#27AE60',
-    gradient: 'linear-gradient(135deg, #1a4a2e 0%, #0F1A35 100%)',
+    accent: '#2E9E4F',
+    gradient: 'linear-gradient(135deg, #1a4a2e 0%, #0C1A12 100%)',
     features: ['Live event listings', 'Filter by category & date', 'Venue maps & details'],
   },
   {
@@ -21,8 +21,8 @@ const MODES = [
     headline: 'Go Anywhere, Know Everything',
     description: 'AI-generated local guides for any city on Earth, plus unfiltered tips from fellow travelers.',
     cta: 'Start Exploring',
-    accent: '#F39C12',
-    gradient: 'linear-gradient(135deg, #3a2a0a 0%, #0F1A35 100%)',
+    accent: '#E8742C',
+    gradient: 'linear-gradient(135deg, #3a2a0a 0%, #0C1A12 100%)',
     features: ['AI local guides', 'Community local tips', 'Etiquette & insider knowledge'],
   },
 ]

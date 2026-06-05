@@ -76,8 +76,8 @@
   transition: all var(--transition);
 }
 .upvoteBtn:hover:not(:disabled) { color: var(--white); }
-.upvoteBtn.green:hover:not(:disabled) { border-color: var(--green); background: rgba(39,174,96,0.1); }
-.upvoteBtn.amber:hover:not(:disabled) { border-color: var(--amber); background: rgba(243,156,18,0.1); }
+.upvoteBtn.green:hover:not(:disabled) { border-color: var(--green); background: rgba(46,158,79,0.1); }
+.upvoteBtn.amber:hover:not(:disabled) { border-color: var(--amber); background: rgba(232,116,44,0.1); }
 
 .upvoteBtn.upvoted {
   cursor: default;

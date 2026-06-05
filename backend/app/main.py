@@ -44,4 +44,4 @@ app.include_router(nomad.router, prefix="/api/nomad")
 
 @app.get("/api/health")
 async def health():
-    return {"status": "ok", "service": "urban-nomad-api"}
+    return {"status": "ok", "service": "vagari-vita-api"}

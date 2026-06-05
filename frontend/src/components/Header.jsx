@@ -13,8 +13,8 @@ export default function Header() {
       <button className={styles.brand} onClick={() => navigate('/')} aria-label="Home">
         <img src="/icons/icon-192.png" alt="" className={styles.headerLogo} />
         <span className={styles.wordmark}>
-          <span style={{ color: '#1B2B5E' }}>Vagari</span>
-          <span style={{ color: '#27AE60' }}>Vita</span>
+          <span style={{ color: '#2E9E4F' }}>Vagari</span>
+          <span style={{ color: '#E8742C' }}>Vita</span>
         </span>
       </button>
       <nav className={styles.nav}>

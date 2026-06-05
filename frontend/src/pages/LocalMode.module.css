@@ -422,7 +422,7 @@
 .formLink {
   color: var(--green-light);
   text-decoration: underline;
-  text-decoration-color: rgba(39, 174, 96, 0.4);
+  text-decoration-color: rgba(46, 158, 79, 0.4);
   text-underline-offset: 2px;
 }
 .formLink:hover { text-decoration-color: var(--green-light); }
@@ -466,5 +466,5 @@
 }
 .idleIcon {
   font-size: 52px;
-  filter: drop-shadow(0 0 20px rgba(39, 174, 96, 0.55));
+  filter: drop-shadow(0 0 20px rgba(46, 158, 79, 0.55));
 }

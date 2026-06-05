@@ -35,7 +35,7 @@
 }
 
 .success {
-  background: rgba(39, 174, 96, 0.15);
+  background: rgba(46, 158, 79, 0.15);
   color: var(--green-light);
   border: 1px solid var(--green);
 }

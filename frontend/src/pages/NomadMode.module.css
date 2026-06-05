@@ -238,7 +238,7 @@
 }
 .shareBtn:hover {
   border-color: var(--amber);
-  background: rgba(243, 156, 18, 0.1);
+  background: rgba(232, 116, 44, 0.1);
 }
 
 .shareToast {
@@ -481,7 +481,7 @@
 .formLink {
   color: var(--amber);
   text-decoration: underline;
-  text-decoration-color: rgba(243, 156, 18, 0.4);
+  text-decoration-color: rgba(232, 116, 44, 0.4);
   text-underline-offset: 2px;
   transition: text-decoration-color var(--transition);
 }
@@ -526,7 +526,7 @@
 
 .idleGlobe {
   font-size: 56px;
-  filter: drop-shadow(0 0 24px rgba(243, 156, 18, 0.55));
+  filter: drop-shadow(0 0 24px rgba(232, 116, 44, 0.55));
 }
 
 .idleExamples {
@@ -550,7 +550,7 @@
 .exampleChip:hover {
   color: var(--white);
   border-color: var(--amber);
-  background: rgba(243,156,18,0.08);
+  background: rgba(232,116,44,0.08);
 }
 
 .surpriseBtn {

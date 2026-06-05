@@ -85,16 +85,16 @@
 }
 .savedBtn:hover {
   border-color: var(--amber);
-  background: rgba(243, 156, 18, 0.08);
+  background: rgba(232, 116, 44, 0.08);
 }
 .savedBtn.active {
   border-color: var(--amber);
-  background: rgba(243, 156, 18, 0.15);
+  background: rgba(232, 116, 44, 0.15);
 }
 
 .starIcon {
   display: inline-flex;
-  filter: drop-shadow(0 0 4px rgba(243,156,18,0.4));
+  filter: drop-shadow(0 0 4px rgba(232,116,44,0.4));
 }
 
 .countBadge {

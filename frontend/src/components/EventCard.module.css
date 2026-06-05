@@ -81,8 +81,8 @@
 .starBtn:hover { transform: scale(1.1); background: rgba(15, 26, 53, 0.85); }
 
 .starBtn.starred {
-  color: #F39C12;
-  text-shadow: 0 0 12px rgba(243, 156, 18, 0.6);
+  color: #E8742C;
+  text-shadow: 0 0 12px rgba(232, 116, 44, 0.6);
 }
 
 .shareBtn {
@@ -194,7 +194,7 @@
 .calBtn:hover {
   color: var(--white);
   border-color: var(--green);
-  background: rgba(39,174,96,0.08);
+  background: rgba(46,158,79,0.08);
 }
 
 .calMenu {
@@ -202,7 +202,7 @@
   bottom: calc(100% + 6px);
   left: 0;
   right: 0;
-  background: #1B2B5E;
+  background: var(--navy);
   border: 1px solid var(--white-dim);
   border-radius: var(--radius-sm);
   box-shadow: 0 10px 28px rgba(0,0,0,0.5);

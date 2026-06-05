@@ -57,6 +57,10 @@ export default function LocalMode() {
       ])
       if (eventsRes.status === 'fulfilled') {
         setEvents(eventsRes.value.events || [])
+        // If the backend typo-corrected the city, show the corrected name
+        if (eventsRes.value.corrected && eventsRes.value.location) {
+          setDisplayName(eventsRes.value.location)
+        }
         setStatus('success')
       } else {
         setErrorMsg(eventsRes.reason?.message || 'Could not load events')

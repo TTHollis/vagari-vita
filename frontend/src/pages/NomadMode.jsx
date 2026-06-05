@@ -118,6 +118,9 @@ export default function NomadMode() {
 
     if (eventsResult.status === 'fulfilled') {
       setEvents(eventsResult.value.events || [])
+      if (eventsResult.value.corrected && eventsResult.value.location) {
+        setDisplayName(eventsResult.value.location)
+      }
       setEventsStatus('success')
     } else {
       setEventsStatus('error')

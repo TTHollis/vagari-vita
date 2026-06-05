@@ -7,6 +7,45 @@ USER_AGENT = "VagariVita/0.1 (https://github.com/TTHollis/vagari-vita)"
 
 
 ZIPPOPOTAM_URL = "https://api.zippopotam.us"
+PHOTON_SEARCH = "https://photon.komoot.io/api/"
+
+# OSM place values we consider "a city/town" when fuzzy-correcting
+_CITYLIKE = {"city", "town", "village", "municipality", "hamlet", "suburb"}
+
+
+async def fuzzy_correct_city(query: str) -> dict | None:
+    """
+    Typo-tolerant city lookup via Photon (OSM autocomplete geocoder, free, no key).
+    'jacksonvillre fl' -> {'city': 'Jacksonville', 'state': 'FL', 'country': 'US'}.
+
+    Returns None if nothing city-like is found, so callers can fall back to the
+    user's original input rather than guessing wildly.
+    """
+    q = (query or "").strip()
+    if not q:
+        return None
+
+    params = {"q": q, "limit": 6, "lang": "en"}
+    try:
+        async with httpx.AsyncClient(timeout=8, headers={"User-Agent": USER_AGENT}) as client:
+            resp = await client.get(PHOTON_SEARCH, params=params)
+            if resp.status_code != 200:
+                return None
+            data = resp.json()
+    except Exception:
+        return None
+
+    # Prefer actual city/town/village results over POIs (airports, offices, etc.)
+    for feature in data.get("features", []):
+        props = feature.get("properties", {})
+        if props.get("osm_key") == "place" and props.get("osm_value") in _CITYLIKE:
+            name = props.get("name")
+            if not name:
+                continue
+            state = _normalize_state(props.get("state") or "")
+            country = (props.get("countrycode") or "").upper()
+            return {"city": name, "state": state, "country": country}
+    return None
 
 
 async def _try_zippopotam(zip_code: str) -> dict | None:

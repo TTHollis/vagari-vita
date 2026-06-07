@@ -36,6 +36,7 @@ export default function LocalMode() {
   const [tipsStatus, setTipsStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [displayName, setDisplayName] = useState('')
+  const [stayLocation, setStayLocation] = useState('')  // clean resolved "City, ST" for Stay links
   const [lastSearch, setLastSearch] = useState(null)
   const [form, setForm] = useState(INITIAL_FORM)
   const [formStatus, setFormStatus] = useState('idle')
@@ -57,10 +58,15 @@ export default function LocalMode() {
         getTips(label),
       ])
       if (eventsRes.status === 'fulfilled') {
-        setEvents(eventsRes.value.events || [])
-        // If the backend typo-corrected the city, show the corrected name
-        if (eventsRes.value.corrected && eventsRes.value.location) {
-          setDisplayName(eventsRes.value.location)
+        const d = eventsRes.value
+        setEvents(d.events || [])
+        // Show the resolved location (handles typo-correction + zip expansion)
+        if (d.location) setDisplayName(d.location)
+        // Clean "City, ST" for the Stay tab's accommodation links
+        if (d.resolved_city) {
+          setStayLocation(d.resolved_state ? `${d.resolved_city}, ${d.resolved_state}` : d.resolved_city)
+        } else {
+          setStayLocation(d.location || label)
         }
         setStatus('success')
       } else {
@@ -184,7 +190,7 @@ export default function LocalMode() {
 
         {/* STAY TAB */}
         {activeTab === 'stay' && isActive && (
-          <Accommodations city={displayName} dateRange={dateRange} mode="local" accentColor="green" />
+          <Accommodations city={stayLocation || displayName} dateRange={dateRange} mode="local" accentColor="green" />
         )}
 
         {/* EVENTS TAB */}

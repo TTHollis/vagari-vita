@@ -88,6 +88,14 @@ async def get_events(
         else:
             label = f"{city}{', ' + state if state else ''}"
 
-        return {"location": label, "count": len(combined), "events": combined, "corrected": corrected}
+        return {
+            "location": label,
+            "count": len(combined),
+            "events": combined,
+            "corrected": corrected,
+            # Clean resolved city/state (no zip suffix) for accommodation links etc.
+            "resolved_city": city,
+            "resolved_state": state,
+        }
     except Exception as exc:
         raise HTTPException(status_code=502, detail=str(exc))

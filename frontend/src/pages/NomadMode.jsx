@@ -33,6 +33,7 @@ export default function NomadMode() {
   const [events, setEvents] = useState([])
   const [tipFilter, setTipFilter] = useState('')
   const [displayName, setDisplayName] = useState('')
+  const [stayLocation, setStayLocation] = useState('')  // clean resolved "City, ST" for Stay links
   const [lastSearch, setLastSearch] = useState(null)
   const [playbookStatus, setPlaybookStatus] = useState('idle')
   const [tipsStatus, setTipsStatus] = useState('idle')
@@ -118,9 +119,13 @@ export default function NomadMode() {
     }
 
     if (eventsResult.status === 'fulfilled') {
-      setEvents(eventsResult.value.events || [])
-      if (eventsResult.value.corrected && eventsResult.value.location) {
-        setDisplayName(eventsResult.value.location)
+      const d = eventsResult.value
+      setEvents(d.events || [])
+      if (d.corrected && d.location) setDisplayName(d.location)
+      if (d.resolved_city) {
+        setStayLocation(d.resolved_state ? `${d.resolved_city}, ${d.resolved_state}` : d.resolved_city)
+      } else {
+        setStayLocation(cityLabel)
       }
       setEventsStatus('success')
     } else {
@@ -308,7 +313,7 @@ export default function NomadMode() {
 
             {/* Stay tab */}
             {activeTab === 'stay' && (
-              <Accommodations city={displayName} dateRange={dateRange} mode="wander" accentColor="amber" />
+              <Accommodations city={stayLocation || displayName} dateRange={dateRange} mode="wander" accentColor="amber" />
             )}
 
             {/* Tips tab — read-only on Nomad; locals add tips via Local mode */}

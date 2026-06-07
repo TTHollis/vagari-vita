@@ -1,0 +1,104 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.sub {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.dateNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--white-soft);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--white-subtle);
+  border-left: 3px solid var(--green);
+}
+.dateNote.amber { border-left-color: var(--amber); }
+.dateNote strong { color: var(--white); }
+.dateNoteDim { color: var(--text-secondary); }
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupTitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--white-dim);
+  background: var(--white-subtle);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+.card.green:hover { border-color: var(--green); background: rgba(46,158,79,0.08); }
+.card.amber:hover { border-color: var(--amber); background: rgba(232,116,44,0.08); }
+
+.cardName {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.cardBlurb {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.cardArrow {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.card.green .cardArrow { color: var(--green-light); }
+.card.amber .cardArrow { color: var(--orange-light); }
+
+.disclaimer {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-top: 4px;
+}

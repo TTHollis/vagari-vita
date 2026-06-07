@@ -6,6 +6,7 @@ import LocationSearch from '../components/LocationSearch'
 import DateFilter from '../components/DateFilter'
 import CalendarView from '../components/CalendarView'
 import MapView from '../components/MapView'
+import Accommodations from '../components/Accommodations'
 import Footer from '../components/Footer'
 import { getEvents, getTips, addTip } from '../services/api'
 import { useRecentSearches } from '../hooks/useRecentSearches'
@@ -137,21 +138,21 @@ export default function LocalMode() {
           <p className={styles.sub}>Find what's happening — share what you know — search by city or zip code</p>
           <LocationSearch onSearch={search} loading={status === 'loading'} accentColor="green" buttonLabel="Search" />
           {activeTab === 'events' && (
-            <>
-              <div className={styles.filters}>
-                {CATEGORIES.map(c => (
-                  <button
-                    key={c.value}
-                    className={`${styles.filterPill} ${category === c.value ? styles.filterActive : ''}`}
-                    onClick={() => handleCategoryChange(c.value)}
-                    type="button"
-                  >
-                    {c.label}
-                  </button>
-                ))}
-              </div>
-              <DateFilter value={dateRange} onChange={handleDateChange} accentColor="green" />
-            </>
+            <div className={styles.filters}>
+              {CATEGORIES.map(c => (
+                <button
+                  key={c.value}
+                  className={`${styles.filterPill} ${category === c.value ? styles.filterActive : ''}`}
+                  onClick={() => handleCategoryChange(c.value)}
+                  type="button"
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+          )}
+          {(activeTab === 'events' || activeTab === 'stay') && (
+            <DateFilter value={dateRange} onChange={handleDateChange} accentColor="green" />
           )}
         </section>
 
@@ -166,6 +167,12 @@ export default function LocalMode() {
               {events.length > 0 && <span className={styles.badge}>{events.length}</span>}
             </button>
             <button
+              className={`${styles.tab} ${activeTab === 'stay' ? styles.tabActive : ''}`}
+              onClick={() => setActiveTab('stay')}
+            >
+              🛏️ Stay
+            </button>
+            <button
               className={`${styles.tab} ${activeTab === 'tips' ? styles.tabActive : ''}`}
               onClick={() => setActiveTab('tips')}
             >
@@ -173,6 +180,11 @@ export default function LocalMode() {
               {tips.length > 0 && <span className={styles.badge}>{tips.length}</span>}
             </button>
           </div>
+        )}
+
+        {/* STAY TAB */}
+        {activeTab === 'stay' && isActive && (
+          <Accommodations city={displayName} dateRange={dateRange} mode="local" accentColor="green" />
         )}
 
         {/* EVENTS TAB */}

@@ -7,6 +7,7 @@ import LocationSearch from '../components/LocationSearch'
 import DateFilter from '../components/DateFilter'
 import CalendarView from '../components/CalendarView'
 import MapView from '../components/MapView'
+import Accommodations from '../components/Accommodations'
 import Footer from '../components/Footer'
 import { getBriefing, getTips, getEvents } from '../services/api'
 import { useRecentSearches } from '../hooks/useRecentSearches'
@@ -179,7 +180,7 @@ export default function NomadMode() {
             accentColor="amber"
             buttonLabel="Explore"
           />
-          {hasResults && activeTab === 'events' && (
+          {hasResults && (activeTab === 'events' || activeTab === 'stay') && (
             <DateFilter value={dateRange} onChange={handleDateChange} accentColor="amber" />
           )}
         </section>
@@ -193,6 +194,9 @@ export default function NomadMode() {
               <button className={`${styles.tab} ${activeTab === 'events' ? styles.tabActive : ''}`} onClick={() => setActiveTab('events')}>
                 🎟️ Events
                 {events.length > 0 && <span className={styles.badge}>{events.length}</span>}
+              </button>
+              <button className={`${styles.tab} ${activeTab === 'stay' ? styles.tabActive : ''}`} onClick={() => setActiveTab('stay')}>
+                🛏️ Stay
               </button>
               <button className={`${styles.tab} ${activeTab === 'tips' ? styles.tabActive : ''}`} onClick={() => setActiveTab('tips')}>
                 💬 <span className={styles.tabFull}>Community </span>Tips
@@ -300,6 +304,11 @@ export default function NomadMode() {
                   </>
                 )}
               </div>
+            )}
+
+            {/* Stay tab */}
+            {activeTab === 'stay' && (
+              <Accommodations city={displayName} dateRange={dateRange} mode="wander" accentColor="amber" />
             )}
 
             {/* Tips tab — read-only on Nomad; locals add tips via Local mode */}
